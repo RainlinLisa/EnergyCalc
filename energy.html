@@ -3,7 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<title>Document</title>
-	<link rel="stylesheet" href="styleCss.css">
+	<!-- <link rel="stylesheet" href="styleCss.css"> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 </head>
 
 <body>
@@ -14,7 +15,7 @@
 	
 	<div class="container">
 		<div class="row">
-			<div class="col-1-3">
+			<div class="col-4">
 				<ul>
 				   <li>Количество ламп, шт.</li>
 				   <li>Количество часов работы ламп в год</li>
@@ -22,7 +23,7 @@
 				</ul>		
 			</div>
 			
-			<div class="col-2-3">
+			<div class="col-4">
 				<ul>
 				   <li><input type="integer" v-model.number="quantityLamp" v-on:keypress="onlyInteger"></li>
 				   <li><input type="integer" v-model="hrYear" v-on:keypress="onlyInteger"></li>
@@ -33,7 +34,7 @@
     </div>
 	
 	<div class="row">
-		<div class="col-1-4">
+		<div class="col-4">
 			<ul>
 				<li>(Тип лампы)</li>
 			   <li>Мощность лампы, Вт</li>
@@ -44,7 +45,7 @@
 			   <li>Первоначальные инвестиции на покупку ламп, руб.</li>
 			</ul>
 		</div>
-		<div class="col-1-4">
+		<div class="col-4">
 			<ul>
 				<li>накаливания</li>
 			    <li>		
@@ -55,14 +56,14 @@
 					</select>
 					<span>(Выбрано: {{ selectedPowerNacal }})</span>
 			    </li>
-			    <li style="font-weight: bold; color: red;"> {{ powerLamp }}</li>
-			    <li> <input type="edit" disabled value="{{ powerYear }}"></input></li>
+			    <li><input type="edit" disabled v-model="powerLamp"></li>
+			    <li><input type="edit" disabled v-model="powerYear"></input></li>
 			    <li><input type="integer" v-model.number="lifeTimeNakal" v-on:keypress="onlyFloat"></li>
 			    <li><input type="integer" v-model.number="costLampNakal" v-on:keypress="onlyFloat"></li>
-			    <li>Первоначальные инвестиции на пjtокупку ламп, руб.</li>
+			    <li><input type="edit" disabled v-model="dummy"></li>
 			</ul>
 		</div>
-		<div class="col-1-4">
+		<div class="col-4">
 			<ul>
 			    <li>
 			   	<li>люминесцентная</li>
@@ -73,14 +74,14 @@
 					</select>
 					<span>(Выбрано: {{ selectedPowerLum }})</span>
 			    </li>
-			    <li>Суммарная мощность ламп, Вт</li>
-			    <li>Потребляемая электроэнергия за год, кВт*час</li>
+			    <li><input type="edit" disabled v-model="dummy"></li>
+			    <li><input type="edit" disabled v-model="dummy"></li>
 			    <li><input type="integer" v-model.number="lifeTimeLum" v-on:keypress="onlyFloat"></li>
 			    <li><input type="integer" v-model.number="costLampLum" v-on:keypress="onlyFloat"></li>
-			    <li>Первоначальные инвестиции на покупку ламп, руб.</li>
+			    <li><input type="edit" disabled v-model="dummy"></li>
 			</ul>
 		</div>
-		<div class="col-1-4">
+		<div class="col-4">
 			<ul>
 			   <li>
 			   	<li>светодиодная</li>
@@ -91,23 +92,14 @@
 					</select>
 					<span>(Выбрано: {{ selectedPowerSvet }})</span>
 			    </li>
-			    <li>Суммарная мощность ламп, Вт</li>
-			    <li>Потребляемая электроэнергия за год, кВт*час</li>
+			    <li><input type="edit" disabled v-model="dummy"></li>
+			    <li><input type="edit" disabled v-model="dummy"></li>
 			    <li><input type="integer" v-model.number="lifeTimeSvet" v-on:keypress="onlyFloat"></li>
 			    <li><input type="integer" v-model.number="costLampSvet" v-on:keypress="onlyFloat"></li>
-			    <li>Первоначальные инвестиции на покупку ламп, руб.</li>
+			    <li><input type="edit" disabled v-model="dummy"></li>
 			</ul>
 		</div>
     </div>
-	
-	<input v-model="lifeTimeNakal" readonly>
-	
-
-	<!-- придумать как вводить только положительные числа с двумя знаками после запятой 
-	     (запятая только одна придумать чтобы русские точки и запятые менялись на нужную точку) -->
-
-	
-	<!-- Выбор мощности ламп -->
  </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.0/vue.js"></script>
@@ -119,6 +111,8 @@
 			quantityLamp: '',
 			hrYear: '',
 			costEnergy: '',
+			dummy: 'x',
+			
 			
 			lifeTimeNakal: '1000.00',
 			costLampNakal: '20',			
