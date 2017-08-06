@@ -9,7 +9,12 @@
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" href="bootstrap-responsive.min.css">
 	
-	<!--<script src="bootstrap.min.js" ></script>-->
+	<!--<script src="bootstrap.min.js" ></script>
+	<style>
+	.mb-5 {
+		margin-bottom: 5px !important;
+	}
+	</style>-->
 </head>
 
 <body>
@@ -19,27 +24,26 @@
 	</div>
 	
 	<div class="container form-group">
-		<div class="row">
-			<div class="span4">
-				
-				   <div>Количество ламп, шт.</div>
-				   <div>Количество часов работы ламп в год</div>
-				   <div>Стоимость электроэнергии - 1 кВт*ч, руб.</div>
-						
-			</div>
+		<form>
+			<div class="control-group controls">
 			
-			<div class="span2">
-				<form>
-				  <div class="control-group">
-					<div class="controls">
-					<div><input class="form-control input-small" type="text" v-model.number="quantityLamp" v-on:keypress="onlyInteger"></div>
-					<div><input class="input-small" type="text" v-model="hrYear" v-on:keypress="onlyInteger"></div>
-					<div><input class="input-small" type="text" v-model.number="costEnergy" v-on:keypress="onlyFloat"></div>
-				</div>
-				</div>
-				</form>
+				<div class="row">
+				   <div class="span4">Количество ламп, шт.</div>
+				   <div class="span2"><input class="form-control input-small" type="text" v-model.number="quantityLamp" v-on:keypress="onlyInteger"></div>
+				 </div>
+				  
+				  <div class="row"> 
+				   <div class="span4">Количество часов работы ламп в год</div>
+				   <div class="span2"><input class="input-small" type="text" v-model="hrYear" v-on:keypress="onlyInteger"></div>
+				   </div>
+				   
+				   <div class="row">
+				   <div class="span4">Стоимость электроэнергии - 1 кВт*ч, руб.</div>
+				   <div class="span2"><input class="input-small" type="text" v-model.number="costEnergy" v-on:keypress="onlyFloat"></div>	
+				   </div>
 			</div>
-		</div>
+		</form>
+	</div>
  
 	
 	<div class="row">
@@ -110,8 +114,29 @@
 			
 		</div>
     </div>
-       </div>
- </div>
+
+</div>
+	<div class="container">
+		<div class="span9" style="border: #E3E4DF solid 2px; border-radius: 10%">
+		 <table class="table">
+			 <thead style="background-image: linear-gradient(0deg, #FEF2EA, #FFFFFF); border-radius: 10%;">
+			 <th>AB</th><th>CD</th>
+			 </thead>
+		 <tbody>
+		 <tr>
+			<td>
+				KK
+			</td>
+			<td>
+				ZZ
+			</td>
+		 </tr>
+		 </tbody>
+		 </table>
+		 </div>
+	 </div>
+</div>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.0/vue.js"></script>
 	
