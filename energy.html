@@ -2,15 +2,18 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<!-- <link rel="stylesheet" href="styleCss.css"> -->
-	<link rel="stylesheet" href="bootstrap-responsive.min.css">
+	<link rel="stylesheet" href="theme-desktop.css">
 	<link rel="stylesheet" href="bootstrap.min.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="bootstrap-responsive.min.css">
+	
+	<script src="bootstrap.min.js" ></script>
 </head>
 
 <body>
- <div id="app">
+ <div id="app" style="background: url(diagonal_lines.png) 0 0 repeat-x; color: #494949; background-color: #F1EFE3;">
 	<div class="container">
 	<h1>Энергосбережение</h1>
 	</div>
@@ -52,7 +55,9 @@
 			
 		</div>
 		<div class="span2">
-			
+		<form>
+		  <div class="control-group">
+			<div class="controls">
 				<div>накаливания</div>
 			    <div>		
 					<select class="input-small" v-model="selectedPowerNacal">
@@ -62,12 +67,14 @@
 					</select>
 					<span>(Выбрано: {{ selectedPowerNacal }})</span>
 			    </div>
-			    <div><input class="input-small" type="edit" disabled v-model="powerLamp"></div>
+			    <div><input class="input-small form-control" type="edit" disabled v-model="powerLamp"></div>
 			    <div><input class="input-small" type="edit" disabled v-model="powerYear"></input></div>
 			    <div><input class="input-small" type="integer" v-model.number="lifeTimeNakal" v-on:keypress="onlyFloat"></div>
 			    <div><input class="input-small" type="integer" v-model.number="costLampNakal" v-on:keypress="onlyFloat"></div>
 			    <div><input class="input-small" type="edit" disabled v-model="dummy"></div>
-			
+		</div>
+		</div>
+		</form>	
 		</div>
 		<div class="span2">
 			
@@ -191,6 +198,8 @@
 			}
 		}
 	})
+	
+
 </script>
 </body>
 </html>	
