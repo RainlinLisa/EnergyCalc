@@ -5,11 +5,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<!-- <link rel="stylesheet" href="styleCss.css"> -->
-	<link rel="stylesheet" href="theme-desktop.css">
+	<!--<link rel="stylesheet" href="theme-desktop.css">-->
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" href="bootstrap-responsive.min.css">
 	
-	<script src="bootstrap.min.js" ></script>
+	<!--<script src="bootstrap.min.js" ></script>-->
 </head>
 
 <body>
@@ -32,9 +32,9 @@
 				<form>
 				  <div class="control-group">
 					<div class="controls">
-					<div><input class="form-control input-small" type="integer" v-model.number="quantityLamp" v-on:keypress="onlyInteger"></div>
-					<div><input class="input-small" type="integer" v-model="hrYear" v-on:keypress="onlyInteger"></div>
-					<div><input class="input-small" type="integer" v-model.number="costEnergy" v-on:keypress="onlyFloat"></div>
+					<div><input class="form-control input-small" type="text" v-model.number="quantityLamp" v-on:keypress="onlyInteger"></div>
+					<div><input class="input-small" type="text" v-model="hrYear" v-on:keypress="onlyInteger"></div>
+					<div><input class="input-small" type="text" v-model.number="costEnergy" v-on:keypress="onlyFloat"></div>
 				</div>
 				</div>
 				</form>
@@ -45,7 +45,7 @@
 	<div class="row">
 		<div class="span4">
 			
-				<div>(Тип лампы)</div>
+			   <div>(Тип лампы)</div>
 			   <div>Мощность лампы, Вт</div>
 			   <div>Суммарная мощность ламп, Вт</div>
 			   <div>Потребляемая электроэнергия за год, кВт*час</div>
@@ -65,13 +65,12 @@
 							{{ option.text }}
 						</option>
 					</select>
-					<span>(Выбрано: {{ selectedPowerNacal }})</span>
 			    </div>
-			    <div><input class="input-small form-control" type="edit" disabled v-model="powerLamp"></div>
-			    <div><input class="input-small" type="edit" disabled v-model="powerYear"></input></div>
-			    <div><input class="input-small" type="integer" v-model.number="lifeTimeNakal" v-on:keypress="onlyFloat"></div>
-			    <div><input class="input-small" type="integer" v-model.number="costLampNakal" v-on:keypress="onlyFloat"></div>
-			    <div><input class="input-small" type="edit" disabled v-model="dummy"></div>
+			    <div><input class="input-small form-control" type="text" disabled v-model="powerLamp"></div>
+			    <div><input class="input-small" type="text" disabled v-model="powerYear"></input></div>
+			    <div><input class="input-small" type="text" v-model.number="lifeTimeNakal" v-on:keypress="onlyFloat"></div>
+			    <div><input class="input-small" type="text" v-model.number="costLampNakal" v-on:keypress="onlyFloat"></div>
+			    <div><input class="input-small" type="text" disabled v-model="dummy"></div>
 		</div>
 		</div>
 		</form>	
@@ -85,13 +84,12 @@
 							{{ option.text }}
 						</option>
 					</select>
-					<span>(Выбрано: {{ selectedPowerLum }})</span>
 			    </div>
-			    <div><input class="input-small" type="edit" disabled v-model="dummy"></div>
-			    <div><input class="input-small" type="edit" disabled v-model="dummy"></div>
-			    <div><input class="input-small" type="integer" v-model.number="lifeTimeLum" v-on:keypress="onlyFloat"></div>
-			    <div><input class="input-small" type="integer" v-model.number="costLampLum" v-on:keypress="onlyFloat"></div>
-			    <div><input class="input-small" type="edit" disabled v-model="dummy"></div>
+			    <div><input class="input-small" type="text" disabled v-model="dummy"></div>
+			    <div><input class="input-small" type="text" disabled v-model="dummy"></div>
+			    <div><input class="input-small" type="text" v-model.number="lifeTimeLum" v-on:keypress="onlyFloat"></div>
+			    <div><input class="input-small" type="text" v-model.number="costLampLum" v-on:keypress="onlyFloat"></div>
+			    <div><input class="input-small" type="text" disabled v-model="dummy"></div>
 			
 		</div>
 		<div class="span2">
@@ -103,13 +101,12 @@
 							{{ option.text }}
 						</option>
 					</select>
-					<span>(Выбрано: {{ selectedPowerSvet }})</span>
 			    </div>
-			    <div><input class="input-small" type="edit" disabled v-model="dummy"></div>
-			    <div><input class="input-small" type="edit" disabled v-model="dummy"></div>
-			    <div><input class="input-small" type="integer" v-model.number="lifeTimeSvet" v-on:keypress="onlyFloat"></div>
-			    <div><input class="input-small" type="integer" v-model.number="costLampSvet" v-on:keypress="onlyFloat"></div>
-			    <div><input class="input-small" type="edit" disabled v-model="dummy"></0div>
+			    <div><input class="input-small text-right" type="text" disabled v-model="dummy"></div>
+			    <div><input class="input-small" type="text" disabled v-model="dummy"></div>
+			    <div><input class="input-small" type="text" v-model.number="lifeTimeSvet" v-on:keypress="onlyFloat"></div>
+			    <div><input class="input-small" type="text" v-model.number="costLampSvet" v-on:keypress="onlyFloat"></div>
+			    <div><input class="input-small" type="text" disabled v-model="dummy"></0div>
 			
 		</div>
     </div>
