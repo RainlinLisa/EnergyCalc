@@ -18,124 +18,229 @@
 </head>
 
 <body>
- <div id="app" style="background: url(diagonal_lines.png) 0 0 repeat-x; color: #494949; background-color: #F1EFE3;">
+ <div class="row-fluid" id="app" style="background: url(diagonal_lines.png) 0 0 repeat-x; color: #494949; background-color: #F1EFE3;">
 	<div class="container">
 	<h1>Энергосбережение</h1>
 	</div>
 	
 	<div class="container form-group">
 		<form>
-			<div class="control-group controls">
-			
+			<div class="control-group controls ">		
 				<div class="row">
 				   <div class="span4">Количество ламп, шт.</div>
-				   <div class="span2"><input class="form-control input-small" type="text" v-model.number="quantityLamp" v-on:keypress="onlyInteger"></div>
-				 </div>
+				   <div class="span2"><input class="form-control input-small text-right" type="text" v-model.number="quantityLamp" v-on:keypress="onlyInteger"></div>
+				</div>
 				  
-				  <div class="row"> 
+				<div class="row"> 
 				   <div class="span4">Количество часов работы ламп в год</div>
-				   <div class="span2"><input class="input-small" type="text" v-model="hrYear" v-on:keypress="onlyInteger"></div>
-				   </div>
+				   <div class="span2"><input class="input-small text-right" type="text" v-model="hrYear" v-on:keypress="onlyInteger"></div>
+				</div>
 				   
-				   <div class="row">
+				<div class="row">
 				   <div class="span4">Стоимость электроэнергии - 1 кВт*ч, руб.</div>
-				   <div class="span2"><input class="input-small" type="text" v-model.number="costEnergy" v-on:keypress="onlyFloat"></div>	
-				   </div>
+				   <div class="span2"><input class="input-small text-right" type="text" v-model.number="costEnergy" v-on:keypress="onlyFloat"></div>	
+				</div>
 			</div>
 		</form>
 	</div>
  
-	
-	<div class="row">
-		<div class="span4">
-			
-			   <div>(Тип лампы)</div>
-			   <div>Мощность лампы, Вт</div>
-			   <div>Суммарная мощность ламп, Вт</div>
-			   <div>Потребляемая электроэнергия за год, кВт*час</div>
-			   <div>Срок службы ламп, часов</div>
-			   <div>Цена за лампу, руб.</div>
-			   <div>Первоначальные инвестиции на покупку ламп, руб.</div>
-			
-		</div>
-		<div class="span2">
+	<div class="container form-group">
 		<form>
-		  <div class="control-group">
-			<div class="controls">
-				<div>накаливания</div>
-			    <div>		
-					<select class="input-small" v-model="selectedPowerNacal">
+			<div class="control-group controls">
+				<div class="row">
+					<div class="span4">(Тип лампы)</div>
+					<div class="span2">Лампа накаливания {{ selectedPowerNacal }}W</div>
+					<div class="span2">Лампа компактная люминесцентная {{ selectedPowerLum }}W</div>
+					<div class="span2">Лампа светодиодная {{ selectedPowerSvet }}W</div>
+				</div>
+				
+				<div class="row">
+					<div class="span4">Мощность лампы, Вт</div>
+					<div class="span2">
+						<select class="input-small" v-model="selectedPowerNacal">
 						<option v-for="option in optionsNacal" v-bind:value="option.value">
 							{{ option.text }}
 						</option>
-					</select>
-			    </div>
-			    <div><input class="input-small form-control" type="text" disabled v-model="powerLamp"></div>
-			    <div><input class="input-small" type="text" disabled v-model="powerYear"></input></div>
-			    <div><input class="input-small" type="text" v-model.number="lifeTimeNakal" v-on:keypress="onlyFloat"></div>
-			    <div><input class="input-small" type="text" v-model.number="costLampNakal" v-on:keypress="onlyFloat"></div>
-			    <div><input class="input-small" type="text" disabled v-model="dummy"></div>
-		</div>
-		</div>
-		</form>	
-		</div>
-		<div class="span2">
-			
-			    <div>
-			   	<div>люминесцентная</div>
-					<select class="input-small" v-model="selectedPowerLum">
+						</select>
+					</div>
+					<div class="span2">
+						<select class="input-small" v-model="selectedPowerLum">
 						<option v-for="option in optionsLum" v-bind:value="option.value">
 							{{ option.text }}
 						</option>
-					</select>
-			    </div>
-			    <div><input class="input-small" type="text" disabled v-model="dummy"></div>
-			    <div><input class="input-small" type="text" disabled v-model="dummy"></div>
-			    <div><input class="input-small" type="text" v-model.number="lifeTimeLum" v-on:keypress="onlyFloat"></div>
-			    <div><input class="input-small" type="text" v-model.number="costLampLum" v-on:keypress="onlyFloat"></div>
-			    <div><input class="input-small" type="text" disabled v-model="dummy"></div>
-			
-		</div>
-		<div class="span2">
-			
-			   <div>
-			   	<div>светодиодная</div>
-					<select class="input-small" v-model="selectedPowerSvet">
+						</select>
+					</div>
+					<div class="span2">
+						<select class="input-small" v-model="selectedPowerSvet">
 						<option v-for="option in optionsSvet" v-bind:value="option.value">
 							{{ option.text }}
 						</option>
-					</select>
-			    </div>
-			    <div><input class="input-small text-right" type="text" disabled v-model="dummy"></div>
-			    <div><input class="input-small" type="text" disabled v-model="dummy"></div>
-			    <div><input class="input-small" type="text" v-model.number="lifeTimeSvet" v-on:keypress="onlyFloat"></div>
-			    <div><input class="input-small" type="text" v-model.number="costLampSvet" v-on:keypress="onlyFloat"></div>
-			    <div><input class="input-small" type="text" disabled v-model="dummy"></0div>
-			
-		</div>
-    </div>
-
-</div>
+						</select>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="span4">Суммарная мощность ламп, Вт</div>
+					<div class="span2"><input class="input-small form-control text-right" type="text" disabled v-model="powerLamp"></div>
+					<div class="span2"><input class="input-small text-right" type="text" disabled v-model="dummy"></div>
+					<div class="span2"><input class="input-small text-right" type="text" disabled v-model="dummy"></div>
+				</div>
+				
+				<div class="row">
+					<div class="span4">Потребляемая электроэнергия за год, кВт*час</div>
+					<div class="span2"><input class="input-small text-right" type="text" disabled v-model="powerYear"></input></div>
+					<div class="span2"><input class="input-small text-right" type="text" disabled v-model="dummy"></div>
+					<div class="span2"><input class="input-small text-right" type="text" disabled v-model="dummy"></div>
+				</div>
+				
+				<div class="row">
+					<div class="span4">Срок службы ламп, часов</div>
+					<div class="span2"><input class="input-small text-right" type="text" v-model.number="lifeTimeNakal" v-on:keypress="onlyFloat"></div>
+					<div class="span2"><input class="input-small text-right" type="text" v-model.number="lifeTimeLum" v-on:keypress="onlyFloat"></div>
+					<div class="span2"><input class="input-small text-right" type="text" v-model.number="lifeTimeSvet" v-on:keypress="onlyFloat"></div>
+				</div>
+				
+				<div class="row">
+					<div class="span4">Цена за лампу, руб.</div>
+					<div class="span2"><input class="input-small text-right" type="text" v-model.number="costLampNakal" v-on:keypress="onlyFloat"></div>
+					<div class="span2"><input class="input-small text-right" type="text" v-model.number="costLampLum" v-on:keypress="onlyFloat"></div>
+					<div class="span2"><input class="input-small text-right" type="text" v-model.number="costLampSvet" v-on:keypress="onlyFloat"></div>
+				</div>
+				
+				<div class="row">
+					<div class="span4">Первоначальные инвестиции на покупку ламп, руб.</div>
+					<div class="span2"><input class="input-small text-right" type="text" disabled v-model="primaryInvestNakal"></div>
+					<div class="span2"><input class="input-small text-right" type="text" disabled v-model="dummy"></div>
+					<div class="span2"><input class="input-small text-right" type="text" disabled v-model="dummy"></div>
+				</div>
+			</div>
+		</form>
+	</div>
+	
 	<div class="container">
-		<div class="span9" style="border: #E3E4DF solid 2px; border-radius: 10%">
-		 <table class="table">
-			 <thead style="background-image: linear-gradient(0deg, #FEF2EA, #FFFFFF); border-radius: 10%;">
-			 <th>AB</th><th>CD</th>
-			 </thead>
-		 <tbody>
-		 <tr>
-			<td>
-				KK
-			</td>
-			<td>
-				ZZ
-			</td>
-		 </tr>
-		 </tbody>
-		 </table>
-		 </div>
+		<div class="span9">
+		<table class="table table-bordered table-striped">
+			<thead style="background-image: linear-gradient(0deg, #FEF2EA, #FFFFFF)"><th colspan="4">1 год использования</th></thead>
+		<tbody>
+		<tr>
+			<td class="span4">Стоимость электоэнергии за 1 год, руб.</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+		</tr>
+		 
+		<tr>
+			<td class="span4">Количество ламп под замену или условное количество ламп с 
+				выработанным ресурсом за 1 год, шт.</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+		</tr>
+		<tr>
+			<td class="span4">Стоимость ламп под замену за 1 год (накопленная на замену ламп), руб.</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+		</tr>
+		<tr>
+			<td class="span4">Всего затрат за 1 год, руб.</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+		</tr>
+		<tr>
+			<td class="span4">СБЕРЕЖЕНИЯ ЗА 1 ГОД (по сравнению с лампами накаливания), руб.</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+		</tr>
+		</tbody>
+		</table>
+		</div>
 	 </div>
-</div>
+	 
+	<div class="container">
+		<div class="span9">
+		<table class="table table-bordered table-striped">
+			<thead style="background-image: linear-gradient(0deg, #FEF2EA, #FFFFFF)"><th colspan="4">3 года использования</th></thead>
+		<tbody>
+		<tr>
+			<td class="span4">Стоимость электоэнергии за 3 года, руб.</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+		</tr>
+		 
+		<tr>
+			<td class="span4">Количество ламп под замену или условное количество ламп с 
+				выработанным ресурсом за 3 года, шт.</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+		</tr>
+		<tr>
+			<td class="span4">Стоимость ламп под замену за 3 года (накопленная на замену ламп), руб.</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+		</tr>
+		<tr>
+			<td class="span4">Всего затрат за 3 года, руб.</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+		</tr>
+		<tr>
+			<td class="span4">СБЕРЕЖЕНИЯ ЗА 3 ГОДА (по сравнению с лампами накаливания), руб.</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+		</tr>
+		</tbody>
+		</table>
+		</div>
+	 </div>
+	<div class="container">
+		<div class="span9">
+		<table class="table table-bordered table-striped">
+			<thead style="background-image: linear-gradient(0deg, #FEF2EA, #FFFFFF)"><th colspan="4">5 лет использования</th></thead>
+		<tbody>
+		<tr>
+			<td class="span4">Стоимость электоэнергии за 5 лет, руб.</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+		</tr>
+		 
+		<tr>
+			<td class="span4">Количество ламп под замену или условное количество ламп с 
+				выработанным ресурсом за 5 лет, шт.</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+		</tr>
+		<tr>
+			<td class="span4">Стоимость ламп под замену за 5 лет (накопленная на замену ламп), руб.</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+		</tr>
+		<tr>
+			<td class="span4">Всего затрат за 5 лет, руб.</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+		</tr>
+		<tr>
+			<td class="span4">СБЕРЕЖЕНИЯ ЗА 5 ЛЕТ (по сравнению с лампами накаливания), руб.</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ dummy }}</td>
+		</tr>
+		</tbody>
+		</table>
+		</div>
+	 </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.0/vue.js"></script>
@@ -151,7 +256,7 @@
 			
 			
 			lifeTimeNakal: '1000.00',
-			costLampNakal: '20',			
+			costLampNakal: '20.00',			
 			selectedPowerNacal: '40',
 			optionsNacal: [
 			  { text: '40', value: 40 },
@@ -160,7 +265,7 @@
 			  { text: '100', value: 100 }
 			],
 			lifeTimeLum: '8000.00',
-			costLampLum: '90',
+			costLampLum: '90.00',
 			selectedPowerLum: '12',
 			optionsLum: [
 			  { text: '12', value: 12 },
@@ -169,7 +274,7 @@
 			  { text: '20', value: 20 }
 			],
 			lifeTimeSvet: '20000.00',
-			costLampSvet: '120',
+			costLampSvet: '120.00',
 			selectedPowerSvet: '8',
 			optionsSvet: [
 			  { text: '8', value: 8 },
@@ -195,6 +300,11 @@
 			costEnergyYear: function () {
 				if (this.computedAll) {
 					return (this.powerYear * this.costEnergy).toFixed(2)
+				}
+			},		
+			primaryInvestNakal: function () {
+				if (this.computedAll) {
+					return (this.quantityLamp * this.costLampNakal).toFixed(2)
 				}
 			}
 		},
