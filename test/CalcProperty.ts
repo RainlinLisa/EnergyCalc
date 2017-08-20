@@ -4,7 +4,7 @@ import Component from "vue-class-component";
 
 @Component({})
 export default class CalcProperty extends Vue {   
-    private quantityLamp: number= 0;
+    private quantityLamp = '';
 	private hrYear: number = 0;
 	private costEnergy: number = 0;
 	private dummy: number = 0;
@@ -38,9 +38,27 @@ export default class CalcProperty extends Vue {
 			  { text: '12', value: 12 },
 			  { text: '15', value: 15 }
 			];
+    
+    dataList = [
+    0, 0, 0
+    ];
+    
+    private calc_dataList() {
+        this.dataList = [];
+        for (let i of [this.selectedPowerFilam, this.selectedPowerLum, this.selectedPowerSvet]) {
+            this.dataList.push(i);
+        }
+    }
+
+    public storeSet() {
+        // TODO проверить если всё
+        this.calc_dataList();
+        this.$store.commit('storeInputs', this);
+        console.log("Я сохраниль!");
+    }
 
     get computedAll(): boolean {
-        return (this.quantityLamp && this.hrYear && this.costEnergy)
+        return (this.quantityLamp && this.hrYear && this.costEnergy);
     };
 
     get powerLamp(): number {
@@ -51,7 +69,8 @@ export default class CalcProperty extends Vue {
 	
 	get powerYear(): number {
         if (this.computedAll) {
-			return ((this.hrYear * this.powerLamp)/1000).toFixed(2)
+            return ((this.hrYear * this.powerLamp)/1000).toFixed(2);
+            
 		}
     };
 	
@@ -75,7 +94,7 @@ export default class CalcProperty extends Vue {
 		if (!regex.test(s)) {
 			event.preventDefault();
 			return false;
-		}    
+		}   
     };
 	
 	public onlyInteger(evt) {

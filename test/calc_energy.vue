@@ -8,9 +8,14 @@
 			<div class="control-group controls ">		
 				<div class="row">
 				   <div class="span4">Количество ламп, шт.</div>
-				   <div class="span2"><input class="form-control input-small text-right" type="text" v-model.number="quantityLamp" v-on:keypress="onlyInteger"></div>
+				   <div class="span2">
+                        <input 
+                            class="form-control input-small text-right" type="text" 
+                            v-model.number="quantityLamp" 
+                            v-on:keypress="onlyInteger"
+                            v-on:keyup="storeSet">
+                   </div>
 				</div>
-				  
 				<div class="row"> 
 				   <div class="span4">Количество часов работы ламп в год</div>
 				   <div class="span2"><input class="input-small text-right" type="text" v-model="hrYear" v-on:keypress="onlyInteger"></div>
@@ -89,9 +94,10 @@
 				
 				<div class="row">
 					<div class="span4">Первоначальные инвестиции на покупку ламп, руб.</div>
-					<div class="span2"><input class="input-small text-right" type="text" disabled v-model="primaryInvestFilam"></div>
-					<div class="span2"><input class="input-small text-right" type="text" disabled v-model="dummy"></div>
-					<div class="span2"><input class="input-small text-right" type="text" disabled v-model="dummy"></div>
+					<div class="span2" v-for="item in dataList">
+                        <input class="input-small text-right" type="text" disabled v-bind:value="item">
+                    </div>
+					
 				</div>
 			</div>
 		</form>
