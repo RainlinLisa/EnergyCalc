@@ -5,7 +5,7 @@ import Component from "vue-class-component";
 @Component({})
 export default class CalcProperty extends Vue {   
     private quantityLamp = '';
-	private hrYear: number = 0;
+	private hrYear = '';
 	private costEnergy: number = 0;
 	private dummy: number = 0;
 	
@@ -39,14 +39,17 @@ export default class CalcProperty extends Vue {
 			  { text: '15', value: 15 }
 			];
     
-    dataList = [
-    0, 0, 0
-    ];
+    dataList = [0, 0, 0];
+	//powerAll = [0, 0, 0];
+	//powerYear = [0, 0, 0];
     
     private calc_dataList() {
         this.dataList = [];
+		//this.powerAll = [];
         for (let i of [this.selectedPowerFilam, this.selectedPowerLum, this.selectedPowerSvet]) {
-            this.dataList.push(i);
+            this.dataList.push(i * this.quantityLamp);
+			//this.powerAll.push(this.dataList.push(i * this.quantityLamp));
+			//this.powerYear[i] = this.dataList[i] * this.quantityLamp;
         }
     }
 
@@ -57,13 +60,17 @@ export default class CalcProperty extends Vue {
         console.log("Я сохраниль!");
     }
 
+	
+	
+	
+	
     get computedAll(): boolean {
         return (this.quantityLamp && this.hrYear && this.costEnergy);
     };
-
+	
     get powerLamp(): number {
         if (this.computedAll) {
-			return this.quantityLamp * this.selectedPower
+			return this.quantityLamp * this.dataList[0];
 		}
     };
 	
