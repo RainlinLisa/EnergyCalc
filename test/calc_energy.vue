@@ -77,9 +77,7 @@
 				
 				<div class="row">
 					<div class="span4">Потребляемая электроэнергия за год, кВт*час</div>
-					<div class="span2"><input class="input-small text-right" type="text" disabled v-model="powerYear"></input></div>
-					<div class="span2"><input class="input-small text-right" type="text" disabled v-model="dummy"></div>
-					<div class="span2"><input class="input-small text-right" type="text" disabled v-model="dummy"></div>
+					<div class="span2" v-for="item in powerYear"><input class="input-small text-right" type="text" disabled v-bind:value="item"></input></div>
 				</div>
 				
 				<div class="row">
@@ -100,7 +98,7 @@
 					<div class="span4">Первоначальные инвестиции на покупку ламп, руб.</div>
 					<div class="span2" v-for="item in dataList">
                         <input class="input-small text-right" type="text" disabled v-bind:value="item">
-                    </div>
+                </div>
 					
 				</div>
 			</div>

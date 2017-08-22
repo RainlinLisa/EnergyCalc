@@ -41,15 +41,16 @@ export default class CalcProperty extends Vue {
     
     dataList = [0, 0, 0];
 	//powerAll = [0, 0, 0];
-	//powerYear = [0, 0, 0];
+	powerYear = [0, 0, 0];
     
     private calc_dataList() {
         this.dataList = [];
+        this.powerYear = [];
 		//this.powerAll = [];
         for (let i of [this.selectedPowerFilam, this.selectedPowerLum, this.selectedPowerSvet]) {
             this.dataList.push(i * this.quantityLamp);
 			//this.powerAll.push(this.dataList.push(i * this.quantityLamp));
-			//this.powerYear[i] = this.dataList[i] * this.quantityLamp;
+            this.powerYear.push(i * +this.quantityLamp * +this.quantityLamp);
         }
     }
 
@@ -74,12 +75,12 @@ export default class CalcProperty extends Vue {
 		}
     };
 	
-	get powerYear(): number {
-        if (this.computedAll) {
-            return ((this.hrYear * this.powerLamp)/1000).toFixed(2);
+	//get powerYear(): number {
+        //if (this.computedAll) {
+            //return ((this.hrYear * this.powerLamp)/1000).toFixed(2);
             
-		}
-    };
+		//}
+    //};
 	
 	get primaryInvestFilam(): number {
         if (this.computedAll) {
