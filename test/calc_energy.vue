@@ -96,10 +96,9 @@
 				
 				<div class="row">
 					<div class="span4">Первоначальные инвестиции на покупку ламп, руб.</div>
-					<div class="span2" v-for="item in dataList">
+					<div class="span2" v-for="item in primaryInvest">
                         <input class="input-small text-right" type="text" disabled v-bind:value="item">
-                </div>
-					
+					</div>	
 				</div>
 			</div>
 		</form>

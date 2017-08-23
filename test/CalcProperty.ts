@@ -6,7 +6,7 @@ import Component from "vue-class-component";
 export default class CalcProperty extends Vue {   
     private quantityLamp = '';
 	private hrYear = '';
-	private costEnergy: number = 0;
+	private costEnergy = '';
 	private dummy: number = 0;
 	
 	private lifeTimeFilam: number = 1000.00;
@@ -40,18 +40,20 @@ export default class CalcProperty extends Vue {
 			];
     
     dataList = [0, 0, 0];
-	//powerAll = [0, 0, 0];
 	powerYear = [0, 0, 0];
+	primaryInvest = [0, 0, 0];
     
     private calc_dataList() {
         this.dataList = [];
         this.powerYear = [];
-		//this.powerAll = [];
+		this.primaryInvest = [];
         for (let i of [this.selectedPowerFilam, this.selectedPowerLum, this.selectedPowerSvet]) {
             this.dataList.push(i * this.quantityLamp);
-			//this.powerAll.push(this.dataList.push(i * this.quantityLamp));
-            this.powerYear.push(i * +this.quantityLamp * +this.quantityLamp);
+            this.powerYear.push(((i * +this.quantityLamp * +this.hrYear)/1000).toFixed(2));
         }
+		for (let j of [this.costLampFilam, this.costLampLum, this.costLampSvet]) {
+			this.primaryInvest.push((j * +this.quantityLamp).toFixed(2));
+		}
     }
 
     public storeSet() {
@@ -82,11 +84,11 @@ export default class CalcProperty extends Vue {
 		//}
     //};
 	
-	get primaryInvestFilam(): number {
+	/* get primaryInvestFilam(): number {
         if (this.computedAll) {
 			return (this.quantityLamp * this.costLampFilam).toFixed(2)
 		}
-    };
+    }; */
 	
 	get costEnergyYear(): number {
         if (this.computedAll) {
