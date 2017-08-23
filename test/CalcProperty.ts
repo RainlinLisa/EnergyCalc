@@ -1,8 +1,12 @@
 import Vue from "vue";
 import Component from "vue-class-component";
+import TableCalc from "./tableCalcComp.vue";    
 
+@Component({
 
-@Component({})
+   components: {
+       "tablecalc-component": TableCalc,
+   }})
 export default class CalcProperty extends Vue {   
     private quantityLamp = '';
 	private hrYear = '';

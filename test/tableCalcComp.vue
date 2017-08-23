@@ -7,7 +7,7 @@
 		<tr>
 			<td class="span4">Стоимость электоэнергии за 1 год, руб.</td>
 			<td class="span2">{{ q }}</td>
-			<td class="span2">{{ dummy }}</td>
+			<td class="span2" :for="props">{{ props.property }}</td>
 			<td class="span2">{{ dummy }}</td>
 		</tr>
 		 

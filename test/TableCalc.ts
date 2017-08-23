@@ -4,7 +4,7 @@ import Component from "vue-class-component";
 
 @Component({
 	props: {
-		property: Object
+		property: 1234
 	}
 })
 export default class TableCalc extends Vue {
