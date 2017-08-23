@@ -1,7 +1,12 @@
 import Vue from "vue";
 import Component from "vue-class-component";
+import Component from "vue-class-component";
 
-@Component({})
+@Component({
+	props: {
+		property: Object
+	}
+})
 export default class TableCalc extends Vue {
     private dummy: number = 0;
 
