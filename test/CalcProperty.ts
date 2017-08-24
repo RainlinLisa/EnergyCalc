@@ -3,7 +3,7 @@ import Component from "vue-class-component";
 import TableCalc from "./tableCalcComp.vue";    
 
 @Component({
-
+	props: {},
    components: {
        "tablecalc-component": TableCalc,
    }})

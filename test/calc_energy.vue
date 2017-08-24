@@ -3,7 +3,7 @@
 	<div class="container">
 	<h1>Энергосбережение</h1>
 	</div>	
-    <tablecalc-component :prop="567"></tablecalc-component> 
+     
 	<div class="container form-group">
 		<form>
 			<div class="control-group controls ">		
@@ -104,8 +104,8 @@
 			</div>
 		</form>
 	</div>
+	<tablecalc-component v-bind:hrYear="hrYear"></tablecalc-component>
 </div>
-
 
 </template>
 

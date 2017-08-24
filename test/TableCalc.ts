@@ -1,10 +1,11 @@
 import Vue from "vue";
 import Component from "vue-class-component";
-import Component from "vue-class-component";
 
 @Component({
 	props: {
-		property: 1234
+		template: '',
+		hrYear: ''
+		
 	}
 })
 export default class TableCalc extends Vue {
