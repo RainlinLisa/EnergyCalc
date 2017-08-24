@@ -14,11 +14,11 @@
 		<tr>
 			<td class="span4">Количество ламп под замену или условное количество ламп с 
 				выработанным ресурсом за {{ template }}, шт.</td>
-			<td class="span2" v-for="item in lifeTime">{{ numberReplaceLamp/item }}</td>
+			<td class="span2" v-for="item in lifeTime">{{ Math.round(numberReplaceLamp/item) }}</td>
 		</tr>
 		<tr>
 			<td class="span4">Стоимость ламп под замену за {{ template }} (накопленная на замену ламп), руб.</td>
-			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ powerYear }}</td>
 			<td class="span2">{{ dummy }}</td>
 			<td class="span2">{{ dummy }}</td>
 		</tr>

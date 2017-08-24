@@ -5,13 +5,14 @@ import Component from "vue-class-component";
 	props: [
 		'template',
 		'hrYear',
-		'lifeTimeFilam'
 	]
 })
 export default class TableCalc extends Vue {
     private dummy: number = 0;
+		
 	lifeTime = [this.$store.getters.lifeTimeFilam, this.$store.getters.lifeTimeLum, this.$store.getters.lifeTimeSvet];
-
+	powerYear = this.$store.getters.powerYear;
+	
     get q (): string {
         console.log("Обновляю!");
         return this.$store.getters.quantityLamp;

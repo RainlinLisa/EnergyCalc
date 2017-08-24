@@ -14,6 +14,7 @@ const store = new Vuex.Store({
 	lifeTimeFilam: '1000.00',
 	lifeTimeLum: '8000.00',
 	lifeTimeSvet: '20000.00',
+	powerYear: '',
   },
   mutations: {
       storeInputs (state, obj) {
@@ -22,6 +23,7 @@ const store = new Vuex.Store({
 		state.lifeTimeFilam = obj.lifeTimeFilam;
 		state.lifeTimeLum = obj.lifeTimeLum;
 		state.lifeTimeSvet = obj.lifeTimeSvet;
+		state.powerYear = obj.powerYear;
         console.log("Новое значение " + state.quantityLamp);
         //...
     }
@@ -45,6 +47,10 @@ const store = new Vuex.Store({
 	  
 	lifeTimeSvet (state) {
         return state.lifeTimeSvet;
+    },
+	  
+	powerYear (state) {
+        return state.powerYear;
     }
   }
 })
