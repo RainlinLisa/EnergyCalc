@@ -50,6 +50,9 @@ export default class CalcProperty extends Vue {
     dataList = [0, 0, 0];
 	private powerYear = [0, 0, 0];
 	primaryInvest = [0, 0, 0];
+    mega: Object = {
+        'powerYear': [0, 1, 123123232321321321313213],
+        };
 	
     
     private calc_dataList() {
@@ -69,7 +72,10 @@ export default class CalcProperty extends Vue {
         // TODO проверить если всё
         this.calc_dataList();
         this.$store.commit('storeInputs', this);
-        console.log("Я сохраниль!");
+        
+        this.mega.powerYear = this.powerYear;
+        //this.mega.lifeTime = [this.lifeTimeFilam, this.lifeTimeLum, this.lifeTimeSvet];
+        console.log("mega ", this.mega);
     }
 
 	

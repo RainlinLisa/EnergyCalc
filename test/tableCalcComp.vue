@@ -18,9 +18,7 @@
 		</tr>
 		<tr>
 			<td class="span4">Стоимость ламп под замену за {{ template }} (накопленная на замену ламп), руб.</td>
-			<td class="span2">{{ powerYear }}</td>
-			<td class="span2">{{ dummy }}</td>
-			<td class="span2">{{ dummy }}</td>
+			<td class="span2" v-for="item in powerYear">{{ item }}</td>
 		</tr>
 		<tr>
 			<td class="span4">Всего затрат за {{ template }}, руб.</td>

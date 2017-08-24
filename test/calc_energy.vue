@@ -117,7 +117,7 @@
 		</form>
 	</div>
 	<div v-for="item in Year">
-		<tablecalc-component  v-bind:template="item" v-bind:hrYear="hrYear"></tablecalc-component>
+		<tablecalc-component  v-bind:template="item" v-bind:powerYear="powerYear" v-bind:mega="mega"></tablecalc-component>
 	</div>
 </div>
 
