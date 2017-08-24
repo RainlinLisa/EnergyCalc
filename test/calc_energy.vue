@@ -25,12 +25,17 @@
 							v-model="hrYear" 
 							v-on:keypress="onlyInteger"
 							v-on:keyup="storeSet">
-						</div>
+					</div>
 				</div>
 				   
 				<div class="row">
 				   <div class="span4">Стоимость электроэнергии - 1 кВт*ч, руб.</div>
-				   <div class="span2"><input class="input-small text-right" type="text" v-model.number="costEnergy" v-on:keypress="onlyFloat"></div>	
+				   <div class="span2">
+						<input 
+							class="input-small text-right" type="text" 
+							v-model.number="costEnergy" 
+							v-on:keypress="onlyFloat">
+					</div>	
 				</div>
 			</div>
 		</form>
@@ -104,7 +109,9 @@
 			</div>
 		</form>
 	</div>
-	<tablecalc-component v-bind:hrYear="hrYear"></tablecalc-component>
+	<div v-for="item in Year">
+		<tablecalc-component  v-bind:template="item" v-bind:hrYear="hrYear"></tablecalc-component>
+	</div>
 </div>
 
 </template>

@@ -10,6 +10,7 @@ const store = new Vuex.Store({
   state: {
     quantityLamp: '',
 	hrYear: '',
+	costEnergy: ''
   },
   mutations: {
       storeInputs (state, obj) {
@@ -20,10 +21,15 @@ const store = new Vuex.Store({
     }
   },
   getters: {
-      qqqq (state) {
+      quantity (state) {
           return state.quantityLamp;
       }
   },
+  getters: {
+      hrYear (state) {
+          return state.hrYear;
+      }
+  }
 })
 
 new Vue({

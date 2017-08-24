@@ -43,6 +43,9 @@ export default class CalcProperty extends Vue {
 			  { text: '15', value: 15 }
 			];
     
+	Year = ['1 год', '3 года', '5 лет'];
+	
+	
     dataList = [0, 0, 0];
 	powerYear = [0, 0, 0];
 	primaryInvest = [0, 0, 0];

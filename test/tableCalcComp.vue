@@ -14,7 +14,7 @@
 		<tr>
 			<td class="span4">Количество ламп под замену или условное количество ламп с 
 				выработанным ресурсом за {{ template }}, шт.</td>
-			<td class="span2">{{ dummy }}</td>
+			<td class="span2">{{ lifeTimeFilam }}</td>
 			<td class="span2">{{ dummy }}</td>
 			<td class="span2">{{ dummy }}</td>
 		</tr>
@@ -31,7 +31,7 @@
 			<td class="span2">{{ dummy }}</td>
 		</tr>
 		<tr>
-			<td class="span4">СБЕРЕЖЕНИЯ ЗА {{ template }} (по сравнению с лампами накаливания), руб.</td>
+			<td class="span4">СБЕРЕЖЕНИЯ ЗА {{ template.toUpperCase() }} (по сравнению с лампами накаливания), руб.</td>
 			<td class="span2">{{ dummy }}</td>
 			<td class="span2">{{ dummy }}</td>
 			<td class="span2">{{ dummy }}</td>
