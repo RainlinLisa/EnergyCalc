@@ -10,25 +10,42 @@ const store = new Vuex.Store({
   state: {
     quantityLamp: '',
 	hrYear: '',
-	costEnergy: ''
+	costEnergy: '',
+	lifeTimeFilam: '1000.00',
+	lifeTimeLum: '8000.00',
+	lifeTimeSvet: '20000.00',
   },
   mutations: {
       storeInputs (state, obj) {
         state.quantityLamp = obj.quantityLamp;
 		state.hrYear = obj.hrYear;
+		state.lifeTimeFilam = obj.lifeTimeFilam;
+		state.lifeTimeLum = obj.lifeTimeLum;
+		state.lifeTimeSvet = obj.lifeTimeSvet;
         console.log("Новое значение " + state.quantityLamp);
         //...
     }
   },
   getters: {
-      quantity (state) {
-          return state.quantityLamp;
-      }
-  },
-  getters: {
-      hrYear (state) {
-          return state.hrYear;
-      }
+    quantityLamp (state) {
+        return state.quantityLamp;
+    },
+	  
+    hrYear (state) {
+        return state.hrYear;
+    },
+	  
+	lifeTimeFilam (state) {
+        return state.lifeTimeFilam;
+    },
+	  
+	lifeTimeLum (state) {
+        return state.lifeTimeLum;
+    },
+	  
+	lifeTimeSvet (state) {
+        return state.lifeTimeSvet;
+    }
   }
 })
 

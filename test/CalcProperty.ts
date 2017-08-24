@@ -44,11 +44,13 @@ export default class CalcProperty extends Vue {
 			];
     
 	Year = ['1 год', '3 года', '5 лет'];
+	//lifeTime = [this.lifeTimeFilam];
 	
 	
     dataList = [0, 0, 0];
 	powerYear = [0, 0, 0];
 	primaryInvest = [0, 0, 0];
+	
     
     private calc_dataList() {
         this.dataList = [];
