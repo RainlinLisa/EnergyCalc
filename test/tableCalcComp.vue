@@ -6,19 +6,17 @@
 		<tbody>
 		<tr>
 			<td class="span4">Стоимость электоэнергии за {{ template }}, руб.</td>
-			<td class="span2">{{ q }}</td>
-			<td class="span2">{{ hrYear }}</td>
-			<td class="span2">{{ dummy }}</td>
+			<td class="span2" v-for="item in EnergyYear">{{ (item  * template.charAt(0)).toFixed(2)}}</td>
 		</tr>
 		 
 		<tr>
 			<td class="span4">Количество ламп под замену или условное количество ламп с 
 				выработанным ресурсом за {{ template }}, шт.</td>
-			<td class="span2" v-for="item in lifeTime">{{ Math.round(numberReplaceLamp/item) }}</td>
+			<td class="span2" v-for="item in numberReplaceLamp">{{ item * template.charAt(0) }}</td>
 		</tr>
 		<tr>
 			<td class="span4">Стоимость ламп под замену за {{ template }} (накопленная на замену ламп), руб.</td>
-			<td class="span2" v-for="item in powerYear">{{ item }}</td>
+			<td class="span2" v-for="item in costNumberReplaceYear">{{ (item * template.charAt(0)).toFixed(2)}}</td>
 		</tr>
 		<tr>
 			<td class="span4">Всего затрат за {{ template }}, руб.</td>

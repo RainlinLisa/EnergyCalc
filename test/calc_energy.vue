@@ -102,9 +102,9 @@
 				
 				<div class="row">
 					<div class="span4">Цена за лампу, руб.</div>
-					<div class="span2"><input class="input-small text-right" type="text" v-model.number="costLampFilam" v-on:keypress="onlyFloat"></div>
-					<div class="span2"><input class="input-small text-right" type="text" v-model.number="costLampLum" v-on:keypress="onlyFloat"></div>
-					<div class="span2"><input class="input-small text-right" type="text" v-model.number="costLampSvet" v-on:keypress="onlyFloat"></div>
+					<div class="span2"><input class="input-small text-right" type="text" v-model.number="costLampFilam" v-on:keypress="onlyFloat" v-on:keyup="storeSet"></div>
+					<div class="span2"><input class="input-small text-right" type="text" v-model.number="costLampLum" v-on:keypress="onlyFloat" v-on:keyup="storeSet"></div>
+					<div class="span2"><input class="input-small text-right" type="text" v-model.number="costLampSvet" v-on:keypress="onlyFloat" v-on:keyup="storeSet"></div>
 				</div>
 				
 				<div class="row">

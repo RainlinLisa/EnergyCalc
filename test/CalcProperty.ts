@@ -48,6 +48,8 @@ export default class CalcProperty extends Vue {
 	
 	
     dataList = [0, 0, 0];
+	//costLamp = [0, 0, 0];
+	
 	private powerYear = [0, 0, 0];
 	primaryInvest = [0, 0, 0];
     mega: Object = {

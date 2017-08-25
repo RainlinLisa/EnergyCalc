@@ -14,7 +14,10 @@ const store = new Vuex.Store({
 	lifeTimeFilam: '1000.00',
 	lifeTimeLum: '8000.00',
 	lifeTimeSvet: '20000.00',
-	powerYear: [1,3],
+	powerYear: [0,0,0],
+	costLampFilam: '20.00',
+	costLampLum: '90.00',
+	costLampSvet: '120.00',
   },
   mutations: {
       storeInputs (state, obj) {
@@ -24,6 +27,10 @@ const store = new Vuex.Store({
 		state.lifeTimeLum = obj.lifeTimeLum;
 		state.lifeTimeSvet = obj.lifeTimeSvet;
 		state.powerYear = obj.powerYear;
+		state.costEnergy = obj.costEnergy;
+		state.costLampFilam = obj.costLampFilam;
+		state.costLampLum = obj.costLampLum;
+		state.costLampSvet = obj.costLampSvet;	
         console.log("py " + obj.powerYear);
         console.log("Новое значение " + state.quantityLamp);
         //...
@@ -53,6 +60,22 @@ const store = new Vuex.Store({
 	powerYear (state) {
         return state.powerYear;
     },
+	
+	costEnergy (state) {
+        return state.costEnergy;
+    },
+	
+	costLampFilam (state) {
+        return state.costLampFilam;
+    },
+	
+	costLampLum (state) {
+        return state.costLampLum;
+    },
+	
+	costLampSvet (state) {
+        return state.costLampSvet;
+    }
   }
 })
 
