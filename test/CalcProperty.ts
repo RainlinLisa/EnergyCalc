@@ -43,19 +43,10 @@ export default class CalcProperty extends Vue {
 			  { text: '15', value: 15 }
 			];
     
-	Year = ['1 год', '3 года', '5 лет'];
-	//lifeTime = [this.lifeTimeFilam];
-	
-	
-    dataList = [0, 0, 0];
-	//costLamp = [0, 0, 0];
-	
+	private Year = ['1 год', '3 года', '5 лет'];		
+    private dataList = [0, 0, 0];
 	private powerYear = [0, 0, 0];
-	primaryInvest = [0, 0, 0];
-    mega: Object = {
-        'powerYear': [0, 1, 123123232321321321313213],
-        };
-	
+	private primaryInvest = [0, 0, 0];
     
     private calc_dataList() {
         this.dataList = [];
@@ -63,7 +54,7 @@ export default class CalcProperty extends Vue {
 		this.primaryInvest = [];
         for (let i of [this.selectedPowerFilam, this.selectedPowerLum, this.selectedPowerSvet]) {
             this.dataList.push(i * this.quantityLamp);
-            this.powerYear.push(((i * +this.quantityLamp * +this.hrYear)/1000).toFixed(2));
+            this.powerYear.push(Math.round((i * +this.quantityLamp * +this.hrYear)/1000));
         }
 		for (let j of [this.costLampFilam, this.costLampLum, this.costLampSvet]) {
 			this.primaryInvest.push((j * +this.quantityLamp).toFixed(2));
@@ -71,47 +62,9 @@ export default class CalcProperty extends Vue {
     }
 
     public storeSet() {
-        // TODO проверить если всё
         this.calc_dataList();
         this.$store.commit('storeInputs', this);
-        
-        this.mega.powerYear = this.powerYear;
-        //this.mega.lifeTime = [this.lifeTimeFilam, this.lifeTimeLum, this.lifeTimeSvet];
-        console.log("mega ", this.mega);
     }
-
-	
-	
-	
-	
-    get computedAll(): boolean {
-        return (this.quantityLamp && this.hrYear && this.costEnergy);
-    };
-	
-    get powerLamp(): number {
-        if (this.computedAll) {
-			return this.quantityLamp * this.dataList[0];
-		}
-    };
-	
-	//get powerYear(): number {
-        //if (this.computedAll) {
-            //return ((this.hrYear * this.powerLamp)/1000).toFixed(2);
-            
-		//}
-    //};
-	
-	/* get primaryInvestFilam(): number {
-        if (this.computedAll) {
-			return (this.quantityLamp * this.costLampFilam).toFixed(2)
-		}
-    }; */
-	
-	get costEnergyYear(): number {
-        if (this.computedAll) {
-			return (this.powerYear * this.costEnergy).toFixed(2)
-		}
-    };
 
     public onlyFloat(evt) {
         var regex = new RegExp("^[0-9]+[.,]?[0-9]{0,2}$");

@@ -30,10 +30,7 @@ const store = new Vuex.Store({
 		state.costEnergy = obj.costEnergy;
 		state.costLampFilam = obj.costLampFilam;
 		state.costLampLum = obj.costLampLum;
-		state.costLampSvet = obj.costLampSvet;	
-        console.log("py " + obj.powerYear);
-        console.log("Новое значение " + state.quantityLamp);
-        //...
+		state.costLampSvet = obj.costLampSvet;
     }
   },
   getters: {
