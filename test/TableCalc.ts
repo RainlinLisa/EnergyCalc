@@ -14,7 +14,9 @@ export default class TableCalc extends Vue {
 	private savingYearArray = [];
 
 	get computedAll () {
-		return (this.$store.getters.costEnergy && this.$store.getters.hrYear && this.$store.getters.quantityLamp);
+		return (this.$store.getters.costEnergy && this.$store.getters.hrYear && this.$store.getters.quantityLamp && 
+			this.$store.getters.lifeTimeFilam && this.$store.getters.lifeTimeLum && this.$store.getters.lifeTimeSvet &&
+				this.$store.getters.costLampFilam && this.$store.getters.costLampLum && this.$store.getters.costLampSvet);
 	}
 
     get lifeTime () {

@@ -11,7 +11,6 @@ export default class CalcProperty extends Vue {
     private quantityLamp = '';
 	private hrYear = '';
 	private costEnergy = '';
-	private dummy: number = 0;
 	
 	private lifeTimeFilam: number = 1000.00;
 	private costLampFilam: number = 20.00;			
