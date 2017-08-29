@@ -76,11 +76,13 @@ const store = new Vuex.Store({
   }
 });
 
-new Vue({
-   el: ".test-container",
-   store,
-   components: {
-       "calcproperty": CalcProperty,
-       "tablecalc-component": TableCalc,
-   }
-});
+export default function createCalc() {
+    new Vue({
+       el: ".test-container",
+       store,
+       components: {
+           "calcproperty": CalcProperty,
+           "tablecalc-component": TableCalc,
+       }
+    });
+}
