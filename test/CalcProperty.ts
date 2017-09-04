@@ -12,7 +12,7 @@ export default class CalcProperty extends Vue {
 	private hrYear = '';
 	private costEnergy = '';
 	
-	private lifeTimeFilam: number = 1000.00;
+	//private lifeTimeFilam: number = 1000.00;
 	private costLampFilam: number = 20.00;			
 	private selectedPowerFilam: number = 40;
 	private optionsFilam: any[] = [
@@ -59,12 +59,19 @@ export default class CalcProperty extends Vue {
 			this.primaryInvest.push((j * +this.quantityLamp).toFixed(2));
 		}
     }
-
+	
     public storeSet() {
         this.calc_dataList();
         this.$store.commit('storeInputs', this);
     }
-
+	
+	get lifeTimeFilam(): string {
+		return this.$store.state.lifeTimeFilam;
+	}
+	set lifeTimeFilam(value:string) {
+        this.$store.commit('lifeTimeFilam', value);;
+    }
+	
     public onlyFloat(evt) {
         var regex = new RegExp("^[0-9]+[.,]?[0-9]{0,2}$");
 		var key = String.fromCharCode(!evt.charCode ? evt.which : evt.charCode);

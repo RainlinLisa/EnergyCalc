@@ -93,8 +93,7 @@
 						<input 
 							class="input-small text-right" type="text" 
 							v-model.number="lifeTimeFilam" 
-							v-on:keypress="onlyFloat" 
-							v-on:keyup="storeSet">
+							v-on:keypress="onlyFloat">
 					</div>
 					<div class="span2"><input class="input-small text-right" type="text" v-model.number="lifeTimeLum" v-on:keypress="onlyFloat" v-on:keyup="storeSet"></div>
 					<div class="span2"><input class="input-small text-right" type="text" v-model.number="lifeTimeSvet" v-on:keypress="onlyFloat" v-on:keyup="storeSet"></div>

@@ -20,10 +20,13 @@ const store = new Vuex.Store({
 	costLampSvet: "120.00",
   },
   mutations: {
+	  lifeTimeFilam (state, value) {
+		state.lifeTimeFilam = value;
+	},
       storeInputs (state, obj) {
         state.quantityLamp = obj.quantityLamp;
 		state.hrYear = obj.hrYear;
-		state.lifeTimeFilam = obj.lifeTimeFilam;
+		//state.lifeTimeFilam = obj.lifeTimeFilam;
 		state.lifeTimeLum = obj.lifeTimeLum;
 		state.lifeTimeSvet = obj.lifeTimeSvet;
 		state.powerYear = obj.powerYear;
