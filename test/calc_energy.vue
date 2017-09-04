@@ -34,8 +34,7 @@
 						<input 
 							class="input-small text-right" type="text" 
 							v-model.number="costEnergy" 
-							v-on:keypress="onlyFloat"
-							v-on:keyup="storeSet">
+							v-on:keypress="onlyFloat">
 					</div>	
 				</div>
 			</div>

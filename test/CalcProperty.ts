@@ -10,7 +10,7 @@ import TableCalc from "./tableCalcComp.vue";
 export default class CalcProperty extends Vue {   
     private quantityLamp = '';
 	private hrYear = '';
-	private costEnergy = '';
+	//private costEnergy = '';
 	
 	//private lifeTimeFilam: number = 1000.00;
 	private costLampFilam: number = 20.00;			
@@ -42,7 +42,7 @@ export default class CalcProperty extends Vue {
 			  { text: '15', value: 15 }
 			];
     
-	private Year = ['1 год', '3 года', '5 лет'];		
+	private year = ['1 год', '3 года', '5 лет'];		
     private dataList = [0, 0, 0];
 	private powerYear = [0, 0, 0];
 	private primaryInvest = [0, 0, 0];
@@ -69,7 +69,14 @@ export default class CalcProperty extends Vue {
 		return this.$store.state.lifeTimeFilam;
 	}
 	set lifeTimeFilam(value:string) {
-        this.$store.commit('lifeTimeFilam', value);;
+        this.$store.commit('lifeTimeFilam', value);
+    }
+	
+	get costEnergy(): string {
+		return this.$store.state.costEnergy;
+	}
+	set costEnergy(value:string) {
+        this.$store.commit('costEnergy', value);
     }
 	
     public onlyFloat(evt) {
