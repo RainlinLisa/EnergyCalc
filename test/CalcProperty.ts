@@ -7,8 +7,7 @@ import TableCalc from "./tableCalcComp.vue";
    components: {
        "tablecalc-component": TableCalc,
    }})
-export default class CalcProperty extends Vue { 
-	private year = ['1 год', '3 года', '5 лет'];		
+export default class CalcProperty extends Vue { 	
 	private powerLampArray = [];
 	private consumedEnergyArray = [];
 	private primaryInvestArray = [];
@@ -152,6 +151,9 @@ export default class CalcProperty extends Vue {
 	set selectedPowerSvet(value:string) {
         this.$store.commit('selectedPowerSvet', value);
     }
+	get year(): string {
+		return this.$store.state.year;
+	}
 	
     public onlyFloat(evt) {
         var regex = new RegExp("^[0-9]+[.,]?[0-9]{0,2}$");
@@ -162,7 +164,7 @@ export default class CalcProperty extends Vue {
 			event.preventDefault();
 			return false;
 		}   
-    };
+    }
 	
 	public onlyInteger(evt) {
 		var regex = new RegExp("^[0-9]+$");
@@ -172,5 +174,5 @@ export default class CalcProperty extends Vue {
 			event.preventDefault();
 			return false;
 		}
-	};
+	}
 }

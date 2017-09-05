@@ -1,4 +1,4 @@
-import Vue from "vue";
+﻿import Vue from "vue";
 import Component from "vue-class-component";
 import CalcProperty from "./calc_energy.vue";
 import TableCalc from "./tableCalcComp.vue";
@@ -39,6 +39,7 @@ const store = new Vuex.Store({
 		{ text: '12', value: 12 },
 		{ text: '15', value: 15 }
 	],
+	year: ['1 год', '3 года', '5 лет'],
   },
   mutations: {  
 	consumedEnergyArray (state, value) {
