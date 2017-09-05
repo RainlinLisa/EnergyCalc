@@ -13,8 +13,7 @@
                         <input 
                             class="form-control input-small text-right" type="text" 
                             v-model.number="quantityLamp" 
-                            v-on:keypress="onlyInteger"
-                            v-on:keyup="storeSet">
+                            v-on:keypress="onlyInteger">
                    </div>
 				</div>
 				<div class="row"> 
@@ -23,8 +22,7 @@
 						<input 
 							class="input-small text-right" type="text" 
 							v-model="hrYear" 
-							v-on:keypress="onlyInteger"
-							v-on:keyup="storeSet">
+							v-on:keypress="onlyInteger">
 					</div>
 				</div>
 				   
@@ -54,21 +52,21 @@
 				<div class="row">
 					<div class="span4">Мощность лампы, Вт</div>
 					<div class="span2">
-						<select class="input-small" v-on:change="storeSet" v-model="selectedPowerFilam">
+						<select class="input-small" v-model="selectedPowerFilam">
 						<option v-for="option in optionsFilam" v-bind:value="option.value">
 							{{ option.text }}
 						</option>
 						</select>
 					</div>
 					<div class="span2">
-						<select class="input-small" v-on:change="storeSet" v-model="selectedPowerLum">
+						<select class="input-small" v-model="selectedPowerLum">
 						<option v-for="option in optionsLum" v-bind:value="option.value">
 							{{ option.text }}
 						</option>
 						</select>
 					</div>
 					<div class="span2">
-						<select class="input-small" v-on:change="storeSet" v-model="selectedPowerSvet">
+						<select class="input-small" v-model="selectedPowerSvet">
 						<option v-for="option in optionsSvet" v-bind:value="option.value">
 							{{ option.text }}
 						</option>
@@ -78,12 +76,12 @@
 				
 				<div class="row">
 					<div class="span4">Суммарная мощность ламп, Вт</div>
-					<div class="span2" v-for="item in dataList"><input class="input-small text-right" type="text" disabled v-bind:value="item"></div>
+					<div class="span2" v-for="item in sumPowerLamp"><input class="input-small text-right" type="text" disabled v-bind:value="item"></div>
 					</div>
 				
 				<div class="row">
 					<div class="span4">Потребляемая электроэнергия за год, кВт*час</div>
-					<div class="span2" v-for="item in powerYear"><input class="input-small text-right" type="text" disabled v-bind:value="item"></input></div>
+					<div class="span2" v-for="item in consumedEnergyYear"><input class="input-small text-right" type="text" disabled v-bind:value="item"></input></div>
 				</div>
 				
 				<div class="row">
@@ -94,15 +92,25 @@
 							v-model.number="lifeTimeFilam" 
 							v-on:keypress="onlyFloat">
 					</div>
-					<div class="span2"><input class="input-small text-right" type="text" v-model.number="lifeTimeLum" v-on:keypress="onlyFloat" v-on:keyup="storeSet"></div>
-					<div class="span2"><input class="input-small text-right" type="text" v-model.number="lifeTimeSvet" v-on:keypress="onlyFloat" v-on:keyup="storeSet"></div>
+					<div class="span2">
+						<input 
+							class="input-small text-right" type="text" 
+							v-model.number="lifeTimeLum" 
+							v-on:keypress="onlyFloat">
+					</div>
+					<div class="span2">
+						<input 
+							class="input-small text-right" type="text" 
+							v-model.number="lifeTimeSvet" 
+							v-on:keypress="onlyFloat">
+					</div>
 				</div>
 				
 				<div class="row">
 					<div class="span4">Цена за лампу, руб.</div>
-					<div class="span2"><input class="input-small text-right" type="text" v-model.number="costLampFilam" v-on:keypress="onlyFloat" v-on:keyup="storeSet"></div>
-					<div class="span2"><input class="input-small text-right" type="text" v-model.number="costLampLum" v-on:keypress="onlyFloat" v-on:keyup="storeSet"></div>
-					<div class="span2"><input class="input-small text-right" type="text" v-model.number="costLampSvet" v-on:keypress="onlyFloat" v-on:keyup="storeSet"></div>
+					<div class="span2"><input class="input-small text-right" type="text" v-model.number="costLampFilam" v-on:keypress="onlyFloat"></div>
+					<div class="span2"><input class="input-small text-right" type="text" v-model.number="costLampLum" v-on:keypress="onlyFloat"></div>
+					<div class="span2"><input class="input-small text-right" type="text" v-model.number="costLampSvet" v-on:keypress="onlyFloat"></div>
 				</div>
 				
 				<div class="row">
@@ -114,7 +122,7 @@
 			</div>
 		</form>
 	</div>
-	<div v-for="item in Year">
+	<div v-for="item in year">
 		<tablecalc-component v-bind:template="item"></tablecalc-component>
 	</div>
 </div>

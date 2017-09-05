@@ -6,7 +6,7 @@
 		<tbody>
 		<tr>
 			<td class="span4">Стоимость электоэнергии за {{ template }}, руб.</td>
-			<td class="span2" v-for="item in EnergyYear">{{ (item  * template.charAt(0)).toFixed(2)}}</td>
+			<td class="span2" v-for="item in costEnergyYear">{{ (item  * template.charAt(0)).toFixed(2)}}</td>
 		</tr>
 		 
 		<tr>

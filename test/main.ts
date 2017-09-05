@@ -14,32 +14,87 @@ const store = new Vuex.Store({
 	lifeTimeFilam: "1000.00",
 	lifeTimeLum: "8000.00",
 	lifeTimeSvet: "20000.00",
-	powerYear: [0, 0, 0],
+	consumedEnergyArray: [0,0,0],
 	costLampFilam: "20.00",
 	costLampLum: "90.00",
 	costLampSvet: "120.00",
+	selectedPowerFilam: 40,
+	optionsFilam: [
+		{ text: '40', value: 40 },
+		{ text: '60', value: 60 },
+		{ text: '75', value: 75 },
+		{ text: '100', value: 100 }
+	],
+	selectedPowerLum: 12,
+	optionsLum: [
+		{ text: '12', value: 12 },
+		{ text: '15', value: 15 },
+		{ text: '18', value: 18 },
+		{ text: '20', value: 20 }
+	],
+	selectedPowerSvet: 8,
+	optionsSvet: [
+		{ text: '8', value: 8 },
+		{ text: '10', value: 10 },
+		{ text: '12', value: 12 },
+		{ text: '15', value: 15 }
+	],
   },
-  mutations: {
+  mutations: {  
+	consumedEnergyArray (state, value) {
+		state.consumedEnergyArray = value;
+	},
+	quantityLamp (state, value) {
+		state.quantityLamp = value;
+	},
+	hrYear (state, value) {
+		state.hrYear = value;
+	},
 	lifeTimeFilam (state, value) {
 		state.lifeTimeFilam = value;
 	},
-	
 	costEnergy (state, value) {
 		state.costEnergy = value;
 	},
-      storeInputs (state, obj) {
-        state.quantityLamp = obj.quantityLamp;
-		state.hrYear = obj.hrYear;
-		//state.lifeTimeFilam = obj.lifeTimeFilam;
-		state.lifeTimeLum = obj.lifeTimeLum;
-		state.lifeTimeSvet = obj.lifeTimeSvet;
-		state.powerYear = obj.powerYear;
-		//state.costEnergy = obj.costEnergy;
-		state.costLampFilam = obj.costLampFilam;
-		state.costLampLum = obj.costLampLum;
-		state.costLampSvet = obj.costLampSvet;
-    }
+	consumedEnergyYear (state, value) {
+		state.consumedEnergyYear = value;
+	},
+	costLampFilam (state, value) {
+		state.costLampFilam = value;
+	},
+	costLampLum (state, value) {
+		state.costLampLum = value;
+	},
+	costLampSvet (state, value) {
+		state.costLampSvet = value;
+	},
+	lifeTimeLum (state, value) {
+		state.lifeTimeLum = value;
+	},
+	lifeTimeSvet (state, value) {
+		state.lifeTimeSvet = value;
+	},
+	selectedPowerFilam (state, value) {
+		state.selectedPowerFilam = value;
+	},
+	optionsFilam (state, value) {
+		state.optionsFilam = value;
+	},
+	selectedPowerLum (state, value) {
+		state.selectedPowerLum = value;
+	},
+	optionsLum (state, value) {
+		state.optionsLum = value;
+	},
+	selectedPowerSvet (state, value) {
+		state.selectedPowerSvet = value;
+	},
+	optionsSvet (state, value) {
+		state.optionsSvet = value;
+	},
   },
+  
+  
   getters: {
     quantityLamp (state) {
         return state.quantityLamp;
@@ -61,8 +116,8 @@ const store = new Vuex.Store({
         return state.lifeTimeSvet;
     },
 
-	powerYear (state) {
-        return state.powerYear;
+	consumedEnergyArray (state) {
+        return state.consumedEnergyArray;
     },
 
 	costEnergy (state) {

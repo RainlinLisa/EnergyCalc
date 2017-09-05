@@ -7,7 +7,7 @@ import Component from "vue-class-component";
 	]
 })
 export default class TableCalc extends Vue {
-	private EnergyYearArray = [];
+	private energyYearArray = [];
 	private numberReplaceArray = [];
 	private costNumberReplaceArray = [];
 	private allCostYearArray = [];
@@ -28,14 +28,14 @@ export default class TableCalc extends Vue {
     }
 
 	// Стоимость электроэнергии за 1 год, руб.
-	get EnergyYear () {
-		this.EnergyYearArray = [0, 0, 0];
+	get costEnergyYear () {
+		this.energyYearArray = [0, 0, 0];
 		if (this.computedAll) {
-			for (let i = 0; i < this.$store.getters.powerYear.length; i++) {
-				this.EnergyYearArray[i] = (this.$store.getters.powerYear[i] * this.$store.getters.costEnergy);
+			for (let i = 0; i < this.$store.getters.consumedEnergyArray.length; i++) {
+				this.energyYearArray[i] = (this.$store.getters.consumedEnergyArray[i] * this.$store.getters.costEnergy);
 			}
 		}
-		return this.EnergyYearArray;
+		return this.energyYearArray;
     }
 
 	// Количество ламп под замену или условное количество ламп с выработанным ресурсом за 1 год, шт.
@@ -64,8 +64,8 @@ export default class TableCalc extends Vue {
 	get allCostYear () {
 		this.allCostYearArray = [0, 0, 0];
 		if (this.computedAll) {
-			for (let i = 0; i < this.EnergyYear.length; i++) {
-				this.allCostYearArray[i] = (this.EnergyYear[i] + this.costNumberReplaceYear[i]);
+			for (let i = 0; i < this.consumedEnergyArray.length; i++) {
+				this.allCostYearArray[i] = (this.consumedEnergyArray[i] + this.costNumberReplaceYear[i]);
 			}
 		}
 		return this.allCostYearArray;
@@ -75,7 +75,7 @@ export default class TableCalc extends Vue {
 	get savingYear () {
 		this.savingYearArray = [0, 0, 0];
 		if (this.computedAll) {
-			for (let i = 0; i < this.EnergyYear.length; i++) {
+			for (let i = 0; i < this.consumedEnergyArray.length; i++) {
 				this.savingYearArray[i] = (this.allCostYear[0] - this.allCostYear[i]);
 			}
 		}
