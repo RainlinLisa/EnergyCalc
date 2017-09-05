@@ -64,8 +64,8 @@ export default class TableCalc extends Vue {
 	get allCostYear () {
 		this.allCostYearArray = [0, 0, 0];
 		if (this.computedAll) {
-			for (let i = 0; i < this.consumedEnergyArray.length; i++) {
-				this.allCostYearArray[i] = (this.consumedEnergyArray[i] + this.costNumberReplaceYear[i]);
+			for (let i = 0; i < this.costEnergyYear.length; i++) {
+				this.allCostYearArray[i] = (this.costEnergyYear[i] + this.costNumberReplaceYear[i]);
 			}
 		}
 		return this.allCostYearArray;
@@ -75,7 +75,7 @@ export default class TableCalc extends Vue {
 	get savingYear () {
 		this.savingYearArray = [0, 0, 0];
 		if (this.computedAll) {
-			for (let i = 0; i < this.consumedEnergyArray.length; i++) {
+			for (let i = 0; i < this.costEnergyYear.length; i++) {
 				this.savingYearArray[i] = (this.allCostYear[0] - this.allCostYear[i]);
 			}
 		}
