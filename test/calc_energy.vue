@@ -52,21 +52,21 @@
 					<tr>
 						<td class="span6">Мощность лампы, Вт</td>
 						<td class="span2">
-							<select class="input-small" v-model="selectedPowerFilam">
+							<select class="input-small" v-model="selectedPowerFilam" @change="selected">
 								<option v-for="option in optionsFilam" v-bind:value="option.value">
 									{{ option.text }}
 								</option>
 							</select>
 						</td>
 						<td class="span2">
-							<select class="input-small" v-model="selectedPowerLum">
+							<select class="input-small" v-model="selectedPowerLum" @change="selected">
 								<option v-for="option in optionsLum" v-bind:value="option.value">
 									{{ option.text }}
 								</option>
 							</select>
 						</td>
 						<td class="span2">
-							<select class="input-small" v-model="selectedPowerSvet">
+							<select class="input-small" v-model="selectedPowerSvet" @change="selected">
 								<option v-for="option in optionsSvet" v-bind:value="option.value">
 									{{ option.text }}
 								</option>

@@ -11,6 +11,13 @@ export default class CalcProperty extends Vue {
 	private powerLampArray = [];
 	private consumedEnergyArray = [];
 	private primaryInvestArray = [];
+    
+    private selected(event) {
+        let n = event.target.selectedIndex;
+        this.selectedPowerFilam = this.optionsFilam[n].value;
+        this.selectedPowerLum = this.optionsLum[n].value;
+        this.selectedPowerSvet = this.optionsSvet[n].value;
+    }
     	
 	get computedAll () {
 		return (this.costEnergy && this.hrYear && this.quantityLamp);
