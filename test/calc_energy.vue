@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<div class="span12">
-			<table class="table">
+			<table class="table table-bord">
 				<tbody>
 					<tr>
 					   <td class="span6">Количество ламп, шт.</td>
@@ -138,7 +138,7 @@
 						</td>
 					</tr>
 					
-					<tr>
+					<tr class="primary-invest">
 						<td class="span6" style="font-weight: bold">Первоначальные инвестиции на покупку ламп, руб.</td>
 						<td class="span2" v-for="item in primaryInvest">
 							<input 

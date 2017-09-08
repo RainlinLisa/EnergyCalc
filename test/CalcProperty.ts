@@ -174,7 +174,7 @@ export default class CalcProperty extends Vue {
     }
 	
 	public onlyInteger(evt) {
-		var regex = new RegExp("^[0-9]+$");
+		var regex = new RegExp("^[0-9 ]+$");
 		var key = String.fromCharCode(!evt.charCode ? evt.which : evt.charCode);
 		var s = evt.srcElement.value + key;
 		if (!regex.test(s)) {

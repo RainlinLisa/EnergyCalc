@@ -1,8 +1,8 @@
 <template>
 	<div class="container">
-		<div class="span12">
-			<table class="table table-bordered table-striped">
-				<thead style="background-image: linear-gradient(0deg, #FEF2EA, #FFFFFF)"><th colspan="4">{{ template }} использования</th></thead>
+		<div class="span12 table-bord-comp">
+			<table class="table table-style">
+				<thead><th colspan="4">{{ template }} использования</th></thead>
 				<tbody>
 					<tr>
 						<td class="span6">Стоимость электроэнергии за {{ template }}, руб.</td>
