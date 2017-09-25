@@ -162,23 +162,23 @@ export default class CalcProperty extends Vue {
 		return this.$store.state.year;
 	}
 	
-    public onlyFloat(evt) {
+	public onlyFloat(evt) {
         var regex = new RegExp("^[0-9]+[.,]?[0-9]{0,2}$");
 		var key = String.fromCharCode(!evt.charCode ? evt.which : evt.charCode);
-		var s = evt.srcElement.value + key;
-		evt.srcElement.value = evt.srcElement.value.replace(",", ".");
+		var s = evt.target.value + key;
+		evt.target.value = evt.target.value.replace(",", ".");
 		if (!regex.test(s)) {
-			event.preventDefault();
+			evt.preventDefault();
 			return false;
 		}   
-    }
+    };
 	
 	public onlyInteger(evt) {
 		var regex = new RegExp("^[0-9 ]+$");
 		var key = String.fromCharCode(!evt.charCode ? evt.which : evt.charCode);
-		var s = evt.srcElement.value + key;
+		var s = evt.target.value + key;
 		if (!regex.test(s)) {
-			event.preventDefault();
+			evt.preventDefault();
 			return false;
 		}
 	}

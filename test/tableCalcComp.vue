@@ -14,7 +14,7 @@
 						<td class="span2" v-for="item in numberReplaceLamp">{{ Math.round(item * template.charAt(0)) }}</td>
 					</tr>
 					<tr>
-						<td class="span6">Стоимость ламп под замену за {{ template }} (накопленная на замену ламп), руб.</td>
+						<td class="span6">Стоимость ламп под замену за {{ template }} (накопления на замену ламп), руб.</td>
 						<td class="span2" v-for="item in costNumberReplaceYear">{{ (item * template.charAt(0)).toFixed(2) }}</td>
 					</tr>
 					<tr>
