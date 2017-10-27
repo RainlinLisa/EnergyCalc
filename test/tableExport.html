@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<link rel="stylesheet" href="../bootstrap.min.css">
+	<link rel="stylesheet" href="../bootstrap-responsive.min.css">
+	<link rel="stylesheet" href="calcEnergyStyle.css">
+    <script src="./dist/table2excel.js"></script>
+	<script src="./pdf/pdfmake.min.js"></script>
+    <script src="./pdf/vfs_fonts.js"></script>
+</head>
+<body>
+    <div id="report-container-default docx" class="test-container" style="background: url(diagonal_lines.png) 0 0 repeat-x; color: #494949; background-color: #F1EFE3;">
+        <calcproperty></calcproperty>
+    </div>
+	<button id="export">Export to excel</button>
+	<button id="exportPDF">Export to PDF</button>
+	<button id="exportDOC">Export to DOC</button>
+    <script type="text/javascript" src="./dist/main.js"></script>
+	<script>
+		var table2excel = new Table2Excel();
+		document.getElementById('export').addEventListener('click', function() {
+        table2excel.export(document.querySelectorAll('table'), 'CaclEnergy');
+		});
+	</script>
+	
+	<script>	
+	document.getElementById('exportPDF').addEventListener('click', function() {		
+		var docInfo = {
+			info: {
+				title:'CaclEnergy'
+			},
+			pageSize:'A4',
+			pageOrientation:'portrait',//'landscape'
+			pageMargins:[40,50,30,45],
+			
+			header:function(currentPage,pageCount) {
+				return {
+					text: currentPage.toString() + 'из' + pageCount,
+					alignment:'right',
+					margin:[0,20,30,30]
+				}
+			},
+			content: [{
+				 text:'Энергосбережение',
+				 fontSize:16,
+				 margin:[30,10,30,0]
+				 //pageBreak:'after'
+			},
+			{
+			table:{
+				widths:['*', 80, 120, 79],
+				body:[
+				],
+				headerRows:0
+				}	
+			}]
+		};
+		
+		
+		for (var i = 1; i < 4; i++) {
+			docInfo.content[1].table.body.push([
+				{text: document.querySelector("tbody > tr:nth-child("+ i +") > td:nth-child(1)").innerHTML},
+				{text: document.querySelector("tbody > tr:nth-child("+ i +") > td:nth-child(2) input").value},
+				'',
+				''
+			])
+		};
+		
+		for (var i = 4; i < 11; i++) {
+			if (i==4) {
+				docInfo.content[1].table.body.push([
+					'',
+					{text: document.querySelector("tbody > tr:nth-child("+ i +") > td:nth-child(2) > div:nth-child(2)").innerHTML},
+					{text: document.querySelector("tbody > tr:nth-child("+ i +") > td:nth-child(3) > div:nth-child(2)").innerHTML},
+					{text: document.querySelector("tbody > tr:nth-child("+ i +") > td:nth-child(4) > div:nth-child(2)").innerHTML}
+				])
+			} else if (i==5) {
+				docInfo.content[1].table.body.push([
+					{text: document.querySelector("tbody > tr:nth-child("+ i +") > td:nth-child(1)").innerHTML},
+					{text: document.querySelector("tbody > tr:nth-child("+ i +") > td:nth-child(2) select").value},
+					{text: document.querySelector("tbody > tr:nth-child("+ i +") > td:nth-child(3) select").value},
+					{text: document.querySelector("tbody > tr:nth-child("+ i +") > td:nth-child(4) select").value}
+				])
+			} else {
+				docInfo.content[1].table.body.push([
+					{text: document.querySelector("tbody > tr:nth-child("+ i +") > td:nth-child(1)").innerHTML},
+					{text: document.querySelector("tbody > tr:nth-child("+ i +") > td:nth-child(2) input").value},
+					{text: document.querySelector("tbody > tr:nth-child("+ i +") > td:nth-child(3) input").value},
+					{text: document.querySelector("tbody > tr:nth-child("+ i +") > td:nth-child(4) input").value}
+				])
+			}
+		};
+		
+		
+		for (var i = 1; i < 4; i++) {
+			docInfo.content[1].table.body.push([
+				{text: document.querySelectorAll('table')[i].querySelector('th').innerHTML, bold:true},
+				'',
+				'',
+				''
+			]);
+			for (var j = 1; j < 6; j++) {
+				docInfo.content[1].table.body.push([
+					{text: document.querySelectorAll('table')[i].querySelector('tr:nth-child('+ j +') > td:nth-child(1)').innerHTML},
+					{text: document.querySelectorAll('table')[i].querySelector('tr:nth-child('+ j +') > td:nth-child(2)').innerHTML},
+					{text: document.querySelectorAll('table')[i].querySelector('tr:nth-child('+ j +') > td:nth-child(3)').innerHTML},
+					{text: document.querySelectorAll('table')[i].querySelector('tr:nth-child('+ j +') > td:nth-child(4)').innerHTML}
+				])
+			}
+		};
+		
+		pdfMake.createPdf(docInfo).download('CaclEnergy.pdf');
+	});		
+	</script>
+	
+	<script>
+		document.getElementById('exportDOC').addEventListener('click', function() {
+			if (!window.Blob) {
+				alert('Your legacy browser does not support this action.');
+				return;
+			};
+			var html, link, blob, url, css;	   
+		    // EU A4 use: size: 841.95pt 595.35pt;  portrait;
+		    // US Letter use: size:11.0in 8.5in;	   
+			css = (
+				'<style>' +
+				'@page test-container{size: 595.35pt 841.95pt;mso-page-orientation: portrait;margin: 2cm 1cm 2.5cm 2cm;}' +
+				'div.test-container {page: test-container;}' +
+				'table{border-collapse:collapse;}td{border:1px gray solid;width:12em;padding:3px;}'+
+				'</style>'
+			);	   
+			// !!! html = document.getElementById('EPBS_103_001_report_CaclEnergySection').innerHTML;
+			html = document.body.innerHTML;
+			for (var i = 1; i < 4; i++) {
+				var re = /<input type="text" class="input-small text-right">/i;
+				numberTabl =  document.querySelector("tbody > tr:nth-child("+ i +") > td:nth-child(2) input").value
+				var html = html.replace(re, numberTabl);
+			};
+			for (var i = 5; i < 11; i++) {
+				if (i==5) {
+					for (var j = 2; j < 5; j++) {
+						var re = /<select[^>]*>([\s\S]*?)<\/select>/i;
+						numberTabl = document.querySelector("tbody > tr:nth-child("+ i +") > td:nth-child("+ j +") select").value;
+						var html = html.replace(re, numberTabl);
+					}
+				} else if (i == 8 || i == 9){
+					for (var j = 2; j < 5; j++) {
+						var re = /<input type="text" class="input-small text-right">/i;
+						numberTabl = document.querySelector("tbody > tr:nth-child("+ i +") > td:nth-child("+ j +") input").value;
+						var html = html.replace(re, numberTabl);
+					}
+				} else {
+					for (var j = 2; j < 5; j++) {
+						var re = /<input type="text" disabled="disabled" class="input-small text-right" style="font-weight: bold;">/i;
+						numberTabl = document.querySelector("tbody > tr:nth-child("+ i +") > td:nth-child("+ j +") input").value;
+						var html = html.replace(re, numberTabl);
+					}
+				}
+			};
+			var reButton = /<button[\s\S]*<\/button>/i;  
+			html = html.replace(reButton, '');
+			var reTd = /<td class="span2"><\/td>/ig
+			html = 'Энергосбережение<br><br>' + html.replace(reTd, '');
+			
+			blob = new Blob(['\ufeff', css + html], {
+				type: 'application/msword'
+		    });
+		    url = URL.createObjectURL(blob);
+		    link = document.createElement('A');
+		    link.href = url;
+		    // Set default file name. 
+		    // Word will append file extension - do not add an extension here.
+		    link.download = 'CaclEnergy';   
+			document.body.appendChild(link);
+		    if (navigator.msSaveOrOpenBlob) navigator.msSaveOrOpenBlob( blob, 'CaclEnergy.doc'); 
+		    // IE10-11
+			else link.click();  // other browsers
+			document.body.removeChild(link);
+		});	
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+

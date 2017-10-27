@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<script src="./pdf/pdfmake.min.js"></script>
+    <script src="./pdf/vfs_fonts.js"></script>
+</head>
+<body>
+    <div>
+        cat cat cat
+    </div>
+	<button id="exportPDF">Export to PDF</button>
+	
+	<script>
+		var docInfo = {
+			info: {
+				title:'Энергосбережение' 
+			},
+			pageSize:'A4',
+			pageOrientation:'landscape',//'portrait'
+			pageMargins:[50,50,30,60],
+			
+			header:function(currentPage,pageCount) {
+				return {
+					text: currentPage.toString() + 'из' + pageCount,
+					alignment:'right',
+					margin:[0,30,10,50]
+				}
+			},
+			footer:[{
+				text:'нижний колонтитул',
+				alignment:'center',//left  right
+			}],
+			content: [{
+			text:'Текст определенного параграфа',
+			fontSize:20
+		}]
+		};					
+		document.getElementById('exportPDF').addEventListener('click', function() {
+			pdfMake.createPdf(docInfo).download('CaclEnergy2.pdf');
+		})
+	</script>
+</body>
+</html>

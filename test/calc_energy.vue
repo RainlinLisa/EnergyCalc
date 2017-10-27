@@ -114,7 +114,7 @@
 								v-model.number="lifeTimeSvet" 
 								v-on:keypress="onlyFloat">
 						</td>
-					<tr>
+					</tr>
 					
 					<tr>
 						<td class="span6">Цена за лампу, руб.</td>

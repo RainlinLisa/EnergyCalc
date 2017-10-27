@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<link rel="stylesheet" href="../bootstrap.min.css">
+	<link rel="stylesheet" href="../bootstrap-responsive.min.css">
+	<link rel="stylesheet" href="calcEnergyStyle.css">
+    <script src="./dist/table2excel.js"></script>
+	
+	<script src="./pdf/pdfmake.min.js"></script>
+    <script src="./pdf/vfs_fonts.js"></script>
+	
+	<script src="vendor/FileSaver.js"></script>
+    <script src="../build/html-docx.js"></script>
+</head>
+<body>
+    <div id="report-container-default" class="test-container" style="background: url(diagonal_lines.png) 0 0 repeat-x; color: #494949; background-color: #F1EFE3;">
+        <calcproperty></calcproperty>
+    </div>
+	<button id="export">Export to excel</button>
+	<button id="exportPDF">Export to PDF</button>
+	<button id="exportDOCX">Export to DOCX</button>
+	
+    <script type="text/javascript" src="./dist/main.js"></script>
+	
+	<script>
+		var table2excel = new Table2Excel();
+		document.getElementById('export').addEventListener('click', function() {
+        table2excel.export(document.querySelectorAll('table'), 'CaclEnergy');
+		});
+	</script>
+	
+	<script>
+	
+	document.getElementById('exportDOCX').addEventListener('click', function(e) {
+		e.preventDefault();
+	  //  convertImagesToBase64()
+
+		var contentDocument = tinymce.get('report-container-default').getDoc();
+		var content = '<!DOCTYPE html>' + contentDocument.documentElement.outerHTML;
+
+		var converted = htmlDocx.asBlob(content, {orientation: landscape});
+		saveAs(converted, 'test.docx');
+    });    
+	</script>
+	
+</body>
+</html>
+
+
+
+
+
+
+

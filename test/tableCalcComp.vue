@@ -9,9 +9,8 @@
 						<td class="span2" v-for="item in costEnergyYear">{{ (item  * template.charAt(0)).toFixed(2)}}</td>
 					</tr>
 					<tr>
-						<td class="span6">Количество ламп под замену или условное количество ламп с 
-							выработанным ресурсом за {{ template }}, шт.</td>
-						<td class="span2" v-for="item in numberReplaceLamp">{{ Math.round(item * template.charAt(0)) }}</td>
+						<td class="span6">Количество ламп под замену или условное количество ламп с выработанным ресурсом за {{ template }}, шт.</td>
+						<td class="span2" v-for="item in numberReplaceLamp">{{ (item * template.charAt(0)).toFixed(2) }}</td>
 					</tr>
 					<tr>
 						<td class="span6">Стоимость ламп под замену за {{ template }} (накопления на замену ламп), руб.</td>

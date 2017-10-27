@@ -1,0 +1,6 @@
+	
+	public onlyInteger.oncut = onlyInteger.oncopy = onlyInteger.onpaste = function(evt) {
+		//result.innerHTML = event.type + ' ' + input.value;
+		console.log("nya!");
+		return false;
+    }
