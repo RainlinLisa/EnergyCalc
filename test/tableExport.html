@@ -5,7 +5,7 @@
     <title></title>
 	<link rel="stylesheet" href="../bootstrap.min.css">
 	<link rel="stylesheet" href="../bootstrap-responsive.min.css">
-	<link rel="stylesheet" href="calcEnergyStyle.css">
+	<link rel="stylesheet" href="calcEnergyStyle.css">	
     <script src="./dist/table2excel.js"></script>
 	<script src="./pdf/pdfmake.min.js"></script>
     <script src="./pdf/vfs_fonts.js"></script>
@@ -14,13 +14,25 @@
     <div id="report-container-default docx" class="test-container" style="background: url(diagonal_lines.png) 0 0 repeat-x; color: #494949; background-color: #F1EFE3;">
         <calcproperty></calcproperty>
     </div>
-	<button id="export">Export to excel</button>
-	<button id="exportPDF">Export to PDF</button>
-	<button id="exportDOC">Export to DOC</button>
+	
+	<div id="exportCalcEnergyTo" class="menuExport">
+		<span class="titleMenu"></span>
+		<ul>
+			<li id="exportPDF"><div></div>Скачать PDF</li>
+			<li id="exportDOC"><div></div>Скачать DOC</li>
+			<li id="exportXLS"><div></div>Скачать XLS</li>
+		</ul>
+	</div>
+
     <script type="text/javascript" src="./dist/main.js"></script>
 	<script>
+		var menuElem = document.getElementById('exportCalcEnergyTo');
+		var titleElem = menuElem.querySelector('.titleMenu');
+		titleElem.onclick = function() {
+			menuElem.classList.toggle('open');
+		};	
 		var table2excel = new Table2Excel();
-		document.getElementById('export').addEventListener('click', function() {
+		document.getElementById('exportXLS').addEventListener('click', function() {
         table2excel.export(document.querySelectorAll('table'), 'CaclEnergy');
 		});
 	</script>
@@ -109,8 +121,7 @@
 					{text: document.querySelectorAll('table')[i].querySelector('tr:nth-child('+ j +') > td:nth-child(4)').innerHTML}
 				])
 			}
-		};
-		
+		};		
 		pdfMake.createPdf(docInfo).download('CaclEnergy.pdf');
 	});		
 	</script>
@@ -159,8 +170,8 @@
 					}
 				}
 			};
-			var reButton = /<button[\s\S]*<\/button>/i;  
-			html = html.replace(reButton, '');
+			/*var reButton = /<div id="exportCalcEnergyTo"[\s\S]*<\/div>/i;  
+			html = html.replace(reButton, '');  */
 			var reTd = /<td class="span2"><\/td>/ig
 			html = 'Энергосбережение<br><br>' + html.replace(reTd, '');
 			
